@@ -87,7 +87,7 @@ namespace SASAI.Cursos
                         dataGridView1.Rows[cont].Cells["Nombre"].Value = ds.Tables["Datos"].Rows[i]["Nombre"].ToString();
                         dataGridView1.Rows[cont].Cells["Apellido"].Value = ds.Tables["Datos"].Rows[i]["Apellido"].ToString();
                         dataGridView1.Rows[cont].Cells["Modalidad"].Value = ds.Tables["Datos"].Rows[i]["modalidad"].ToString();
-                        MessageBox.Show(ds.Tables["Datos"].Rows[i]["modalidad"].ToString());
+                       // MessageBox.Show(ds.Tables["Datos"].Rows[i]["modalidad"].ToString());
                         dataGridView1.Rows[cont].Cells["Turno"].Value = ds.Tables["Datos"].Rows[i]["turno"].ToString();
                         dataGridView1.Rows[cont].Cells["Nota Final"].Value = ds.Tables["Datos"].Rows[i]["NotaMateria"].ToString();
                         dataGridView1.Rows[cont].Cells["Email"].Value = ds.Tables["Datos"].Rows[i]["Email"].ToString();
@@ -101,7 +101,7 @@ namespace SASAI.Cursos
                     }
                 } catch (Exception ex) {
 
-                    az(ex.ToString());
+                  //  az(ex.ToString());
                 }
                
                
@@ -162,7 +162,7 @@ namespace SASAI.Cursos
                 CargarDatos();
             }
             catch (Exception ex) {
-                az(ex.ToString());
+                //az(ex.ToString());
             }
 
         }
@@ -220,7 +220,7 @@ namespace SASAI.Cursos
                     {
 
                         SqlCommand comando = new SqlCommand();
-                        MessageBox.Show(dataGridView1.Columns[cell].HeaderText);
+                       // MessageBox.Show(dataGridView1.Columns[cell].HeaderText);
                         DatosSP.Notasp(ref comando, codcurso, codmateria, codespe, dataGridView1.Rows[row].Cells[cell].Value.ToString(), int.Parse(dataGridView1.Rows[row].Cells[0].Value.ToString()));
                         DatosSP.Notas_tiponota(ref comando, dataGridView1.Columns[cell].HeaderText);
                         aq.ConfigurarProcedure(ref comando, "updatenotaparciales");
@@ -275,7 +275,7 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
             }
             if (dataGridView1.Columns[cell].HeaderText == "Modalidad") {
                 
-                if (dataGridView1.Rows[row].Cells[cell].Value.ToString().Contains("PRESENCIAL")==true)
+                if (dataGridView1.Rows[row].Cells[cell].Value.ToString().ToUpper()!="PRESENCIAL" && dataGridView1.Rows[row].Cells[cell].Value.ToString().ToUpper() != "LIBRE")
                     //|| dataGridView1.Rows[row].Cells[cell].Value.ToString() != "LIBRE")
                 {
                     guardarNotaf = false;
@@ -295,7 +295,7 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
                 }
                 else {
                     guardarNotaf = false;
-                    az("El turno tiene que ser: NOCHE   o  MAÑANA");
+                    az("El turno tiene que ser: NOCHE o MAÑANA");
                 }
 
             }
@@ -353,7 +353,7 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
                     
                 }
                 catch (Exception ex) {
-                    az(ex.ToString());
+                   // az(ex.ToString());
                 }
 
 
@@ -361,6 +361,11 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
             }
 
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Clases_SQL.Excel.exportar(dataGridView1);
         }
     }
 }

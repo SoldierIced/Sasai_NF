@@ -29,7 +29,7 @@ namespace SASAI.Alumnos
            
             sabernombremateria();
             radioButton2.Checked = true;
-            radioButton4.Checked = true;
+            radioButton3.Checked = true;
         }
 
        public void sabernombremateria() {
@@ -55,6 +55,11 @@ namespace SASAI.Alumnos
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void inscripcionmaterias_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

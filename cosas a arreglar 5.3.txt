@@ -1,0 +1,19 @@
+Auditoria---------------------------------------
+Esconder lo del control de tablas o hacerlo lindo.
+Interesados--------------------------------------
+esta todo mal, tendria que poder agregarse valores, editar los que ya estan y eliminar.
+no poder poner un email que ya es alumno.= dar aviso 
+----------------------------------------------------------------------------------------------
+reportes
+1) listado de alumnos aprobados x curso y x turno x materia x modalidad con:
+   nombre y apellido, dni nota en cada materia, email y observacion.
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

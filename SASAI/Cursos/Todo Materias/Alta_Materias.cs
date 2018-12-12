@@ -20,7 +20,7 @@ namespace SASAI
 
         public int ObtenerID()
         {
-
+           
             string idNuevo;
             idNuevo = Variable2;
 
@@ -96,23 +96,30 @@ namespace SASAI
                     int id = ObtenerID()+1;
 
                     IDConseguido = "00" + id.ToString();
-                    MessageBox.Show(IDConseguido);
+                   // MessageBox.Show(IDConseguido);
                     string doble = txb_PrecioM.Text;
                     decimal doblesss = Convert.ToDecimal(doble);
                     int number = Decimal.ToInt32(doblesss);
 
-                   
-                    
+
+                    if (number > 0)
+                    {
+                        comando = DatosSP.MateriasCarga(IDConseguido, txb_NombreM.Text, number.ToString(), int.Parse(n1.Value.ToString()), int.Parse(n2.Value.ToString()), int.Parse(textBox1.Text));
+                        aq.EjecutarProcedimientoAlmacenado(comando, "CrearMateria");
+                        MessageBox.Show("Materia creada correctamente");
+                        this.Close();
+                    }
+                    else {
+                        MessageBox.Show("Tiene que ser un numero positivo.");
+                    }
 
 
-                    comando = DatosSP.MateriasCarga(IDConseguido, txb_NombreM.Text, number.ToString(),int.Parse(n1.Value.ToString()), int.Parse(n2.Value.ToString()), int.Parse(textBox1.Text));
-                    aq.EjecutarProcedimientoAlmacenado(comando, "CrearMateria");
-                    this.Close();
+                  
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show("Ingrese un numero correcto");
             }
         }
 
@@ -136,6 +143,16 @@ namespace SASAI
         private void Alta_Materias_Load(object sender, EventArgs e)
         {
             Variable2 = verficar_cantidadMaterias();
+        }
+
+        private void txb_PrecioM_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
         }
     }
 }

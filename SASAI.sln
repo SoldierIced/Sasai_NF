@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SASAI", "SASAI\SASAI.csproj", "{4A66E36D-C905-4CF3-89DA-13D4F6952588}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SASAI 5.3 04-10", "SASAI\SASAI 5.3 04-10.csproj", "{4A66E36D-C905-4CF3-89DA-13D4F6952588}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

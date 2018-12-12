@@ -10,7 +10,7 @@ create table Logen (numerito int default 0 not null)
 --go
 create table Usuarios (
 usuario varchar(20) not null,
-contrasena varchar(20) not null,
+contrasena nvarchar(20) not null,
 acceso int not null,
 baja bit not null default 0,
 constraint pk_claveUsuarios Primary Key (usuario)
@@ -97,7 +97,8 @@ create table Interesados (
 Email varchar(100)  not null,
 Nombre varchar(50)  not null,
 Apellido varchar(50)  not null,
-FechaConsulta date not null,
+FechaConsulta varchar(50) not null,
+observacion varchar(300),
 constraint pk_claveInteresados Primary Key (Email))
 
 
@@ -214,7 +215,7 @@ go
 --go
 
 
-insert into Interesados select '','','',GETDATE()
+insert into Interesados select '','','','',GETDATE()
 go
 
 
@@ -301,7 +302,7 @@ where usuario=@user and contrasena=@contra
 --------------------------------------------------------------------------------------------
 go
 create procedure CrearUsuario
-@user varchar(20), @contra int , @acceso int
+@user varchar(20), @contra nvarchar(20) , @acceso int
 as
 insert into Usuarios(usuario,contrasena,acceso)
 select @user,@contra, @acceso 
@@ -323,7 +324,7 @@ go
 --------------------------------------------------------------------------------------------
 go
 create procedure VerificarUsuarioActivo (
-@user varchar(20), @contra int 
+@user varchar(20), @contra nvarchar(20)
 )
 AS
 declare @ar int
@@ -371,9 +372,8 @@ select @ar
 --drop procedure CrearMateria
 --go
 
-
 create procedure VerificarMateriaPosta
-  ( @legajo int ,@codmateria varchar (40) , @idinscripto int,@codcurso varchar(40),@modalidad varchar(40),@turno varchar(40),@user varchar(40) )
+  ( @legajo int ,@codmateria varchar (40) , @idinscripto int,@codcurso varchar(40),@modalidad varchar(40),@turno varchar(40),@user varchar(40),@fechita date )
 as
 declare @cantcur int
 set @cantcur= (select COUNT(codcurso) from Cursos)
@@ -388,7 +388,7 @@ set @notac=(select Nota_Min from Cursos where CodCurso=@cantcur )
 set @fecha= (select fecha from AlumnosxMateriasxCursos where CodMateria=@codmateria and Codcurso=@cantcur and legajo=@legajo)--localizamos la fecha de cuando tuvo esa  nota.
 set @fecha2=@fecha
 set @fecha2= DATEADD (YEAR,1,@fecha)
-if (@fecha2>GETDATE()) begin -- si es mayor es porque no se vencio la materia
+if (@fecha2>@fechita) begin -- si es mayor es porque no se vencio la materia
  --preguntar si la nota esta aprobada o no.
 	if(@nota>=@notac) begin -- si es true es porque la tiene aprobada y no vencida
  insert into AlumnosxMateriasxCursos  select @legajo,@codmateria,@codcurso,'001',@nota,'Sistema.Trasf.Notas',@idinscripto,0,
@@ -401,7 +401,7 @@ if (@fecha2>GETDATE()) begin -- si es mayor es porque no se vencio la materia
 set @cantcur=@cantcur-1
 end
 if (@cantcur=0) begin 
-insert into AlumnosxMateriasxCursos  select @legajo,@codmateria,@codcurso,'001',0,@user,@idinscripto,0,@modalidad,@turno,GETDATE()
+insert into AlumnosxMateriasxCursos  select @legajo,@codmateria,@codcurso,'001',0,@user,@idinscripto,0,@modalidad,@turno,@fechita
       end 
 go
 

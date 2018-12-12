@@ -43,8 +43,8 @@ namespace SASAI.Cursos
        
             textBox1.Text = ds.Tables["cargadedatos"].Rows[0][0].ToString();
             textBox2.Text = ds.Tables["cargadedatos"].Rows[0][3].ToString();
-            textBox3.Text = ds.Tables["cargadedatos"].Rows[0][2].ToString();
-            textBox4.Text = ds.Tables["cargadedatos"].Rows[0][1].ToString();
+            textBox3.Text = (DateTime.Parse( ds.Tables["cargadedatos"].Rows[0][2].ToString())).ToShortDateString();
+            textBox4.Text = (DateTime.Parse(ds.Tables["cargadedatos"].Rows[0][1].ToString())).ToShortDateString();
             textBox5.Text = ds.Tables["cargadedatos"].Rows[0][5].ToString();
             label4.Text ="Cantidad: "+(dataGridView1.Rows.Count)+"/" + ds.Tables["cargadedatos"].Rows[0][4].ToString();
 
@@ -146,7 +146,7 @@ namespace SASAI.Cursos
                         // dataGridView1.Rows[cont].Cells["Monto a Abonar"].Value += ds.Tables["Datos"].Rows[i][7].ToString();
                         dataGridView1.Rows[cont].Cells[ds.Tables["Datos"].Rows[i][7].ToString()].Value = ds.Tables["Datos"].Rows[i][5].ToString();
 
-                        if (ds.Tables["Datos"].Rows[i]["modalidad"].ToString() != "LIBRE")
+                        if (ds.Tables["Datos"].Rows[i]["modalidad"].ToString() == "PRESENCIAL" || ds.Tables["Datos"].Rows[i]["modalidad"].ToString()=="presencial")
                         {
                             dataGridView1.Rows[cont].Cells["Monto a Abonar"].Value = ds.Tables["Datos"].Rows[i][8].ToString();
                         }
@@ -158,7 +158,7 @@ namespace SASAI.Cursos
                     {
                         //carga de nota de materias
                         dataGridView1.Rows[cont - 1].Cells[ds.Tables["Datos"].Rows[i][7].ToString()].Value = ds.Tables["Datos"].Rows[i][5].ToString();
-                        if (ds.Tables["Datos"].Rows[i]["modalidad"].ToString() != "LIBRE") {
+                        if (ds.Tables["Datos"].Rows[i]["modalidad"].ToString().Contains("presencial") || ds.Tables["Datos"].Rows[i]["modalidad"].ToString().Contains("PRESENCIAL")) {
                       
                        
                         //ver que esta recibiendo en b..
@@ -199,7 +199,7 @@ namespace SASAI.Cursos
             }
             catch (Exception ex) {
 
-                MessageBox.Show(ex.ToString());
+               // MessageBox.Show(ex.ToString());
             }
            
         }
@@ -310,6 +310,11 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
         private void CursoSeleccionado_Resize(object sender, EventArgs e)
         {
             dataGridView1.Height = this.Height -177;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Clases_SQL.Excel.exportar(dataGridView1);
         }
     }
     

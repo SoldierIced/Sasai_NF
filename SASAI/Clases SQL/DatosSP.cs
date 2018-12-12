@@ -329,7 +329,7 @@ namespace SASAI
          }
         
          public static SqlCommand Interesados 
-             (string Email,string Nombre,string Apellido, DateTime FechaConsulta)
+             (string Email,string Nombre,string Apellido, string FechaConsulta,string observacion)
          {
          SqlCommand Comando = new SqlCommand();
              SqlParameter SqlParametros = new SqlParameter();
@@ -339,9 +339,11 @@ namespace SASAI
              SqlParametros.Value = Nombre ;
              SqlParametros = Comando.Parameters.Add ("@Apellido",SqlDbType.NVarChar, 50);
              SqlParametros.Value = Apellido;
-             SqlParametros = Comando.Parameters.Add ("@FechaConsulta",SqlDbType.Date);
+             SqlParametros = Comando.Parameters.Add ("@FechaConsulta",SqlDbType.NVarChar,50);
              SqlParametros.Value = FechaConsulta;
-         
+            SqlParametros = Comando.Parameters.Add("@observacion", SqlDbType.NVarChar, 300);
+            SqlParametros.Value = observacion;
+
             return Comando;
          }
         
@@ -389,7 +391,7 @@ namespace SASAI
             SqlParameter SqlParametros = new SqlParameter();
             SqlParametros = Comando.Parameters.Add("@user", SqlDbType.NVarChar, 20);
             SqlParametros.Value = usuario;
-            SqlParametros = Comando.Parameters.Add("@contra", SqlDbType.NVarChar, 50);
+            SqlParametros = Comando.Parameters.Add("@contra", SqlDbType.NVarChar, 20);
             SqlParametros.Value = contrasena;
             SqlParametros = Comando.Parameters.Add("@acceso", SqlDbType.Int);
             SqlParametros.Value = val;
@@ -416,7 +418,7 @@ namespace SASAI
         public static void Usuario_Contrasena (ref SqlCommand Comando, string contra)
         {
             SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@contra", SqlDbType.NVarChar, 50);
+            SqlParametros = Comando.Parameters.Add("@contra", SqlDbType.NVarChar, 20);
             SqlParametros.Value = contra;
 
         }

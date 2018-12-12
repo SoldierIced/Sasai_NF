@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Listar_Materias));
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,17 +43,16 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.btnmas = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(340, 181);
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(301, 192);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(127, 17);
+            this.checkBox1.Size = new System.Drawing.Size(178, 24);
             this.checkBox1.TabIndex = 17;
             this.checkBox1.Text = "Materia seleccionada";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -63,7 +61,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(326, 270);
+            this.button1.Location = new System.Drawing.Point(315, 261);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 23);
             this.button1.TabIndex = 16;
@@ -197,32 +195,11 @@
             this.textBox6.Size = new System.Drawing.Size(32, 20);
             this.textBox6.TabIndex = 44;
             // 
-            // btnmas
-            // 
-            this.btnmas.Image = ((System.Drawing.Image)(resources.GetObject("btnmas.Image")));
-            this.btnmas.Location = new System.Drawing.Point(106, 225);
-            this.btnmas.Name = "btnmas";
-            this.btnmas.Size = new System.Drawing.Size(29, 27);
-            this.btnmas.TabIndex = 45;
-            this.btnmas.UseVisualStyleBackColor = true;
-            this.btnmas.Click += new System.EventHandler(this.btnmas_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 231);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 13);
-            this.label7.TabIndex = 46;
-            this.label7.Text = "Agregar materias ->";
-            // 
             // Listar_Materias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 305);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.btnmas);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
@@ -264,7 +241,5 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button btnmas;
-        private System.Windows.Forms.Label label7;
     }
 }

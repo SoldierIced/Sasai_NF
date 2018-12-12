@@ -13,7 +13,12 @@ namespace SASAI
 {
     public partial class AlumnosF : Form
     {
-       // public string qseyo { get; set; }
+        // public string qseyo { get; set; }
+        SqlCommand comando = new SqlCommand();
+        AccesoDatos aq = new AccesoDatos();
+        DataSet ds = new DataSet();
+        public string consulta = "";
+        public string dni = "";
         public int tablita { get; set; }
         public AlumnosF()
         {
@@ -22,7 +27,7 @@ namespace SASAI
 
         private void AlumnosF_Load(object sender, EventArgs e)
         {
-
+            comboBox1.SelectedIndex = 0;
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -32,43 +37,36 @@ namespace SASAI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlCommand comando = new SqlCommand();
-            AccesoDatos aq = new AccesoDatos();
-            DataSet ds = new DataSet();
-            /* DatosSP.Inscripto_DNI(ref comando, int.Parse(textBox1.Text));
+           
+          //  MessageBox.Show(comboBox1.SelectedIndex.ToString());
+            if (comboBox1.SelectedIndex != -1) {
 
-             aq.EjecutarProcedimientoAlmacenado(comando, "verificarExistenciaInscripto");
-             */
-            string consulta = "exec verificarExistenciaInscripto " + textBox1.Text;
-            aq.cargaTabla("asd", consulta, ref ds);
-            dataGridView1.DataSource = ds.Tables[0];
-            try
-            {
-                if (dataGridView1.Columns[dataGridView1.Columns.Count - 2].HeaderText == "baja")
+                string aux = armarconsulta(comboBox1.Text);
+                aq.cargaTabla("Ver si esta en inscriptos", aux, ref ds);
+                //  MessageBox.Show(ds.Tables["Ver si esta en inscriptos"].Rows.Count.ToString());
+                if (ds.Tables["Ver si esta en inscriptos"].Rows.Count != 0)
                 {
-
-                    AlumnoSelecionado af = new AlumnoSelecionado(dataGridView1.Rows[0].Cells[0].Value.ToString(), 2);
-                    af.ShowDialog();
+                    consulta = aux;
+                    tablita = int.Parse( comboBox1.SelectedIndex.ToString())+1;
+                    this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    
-
-                    if (dataGridView1.Columns[dataGridView1.Columns.Count - 2].HeaderText == "observaciones")
-                    {
-                        AlumnoSelecionado af = new AlumnoSelecionado(dataGridView1.Rows[0].Cells[0].Value.ToString(), 1);
-                        af.ShowDialog();
-                        this.Close();
-                    }
-
-
+                    tablita = 0;
+                    MessageBox.Show("Alumno no encontrado, vuelva a intentarlo");
                 }
             }
-            catch(Exception ex) {
-                
-            MessageBox.Show( "Alumnos no encontrado");
+            else
+            {
+                tablita = 0;
+                MessageBox.Show("Seleccione alguna de las tablas disponibles.");
             }
+
+        
+
+
+          
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -78,17 +76,14 @@ namespace SASAI
 
 
 
-        public void armarconsulta(ref string ar, string tabla)
+        public string armarconsulta( string tabla)
         {
             string d1 = " AND ";
-
-            int num = 0;
-            if (ar == string.Empty)
-            {
-                ar = "select * from  " + tabla;
+           int num = 0;
 
 
-            }
+           string  ar = "select * from  " + tabla;
+            
 
             if (textBox1.Text != string.Empty)
             {
@@ -122,14 +117,17 @@ namespace SASAI
                 num++;
 
             }
-            if (textBox5.Text != string.Empty)
-            {
-                if (num != 0) { ar += d1; num = 0; }
-                else { ar += " where "; }
-                ar += "  UltimoCurso  like '%" + textBox5.Text + "%' ";
-                num++;
+          //  MessageBox.Show(ar);
+            if (ar == "select * from  Inscriptos")
+                ar = "select DNI, Nombre, Apellido, UltimoCurso as 'Codigo de ultimo Curso', Email, Telefono, TipoConst as 'Comprobante que trajo'," +
+                    " Const_Analitico, Const_Cuil as 'Const. de Cuil',fotoc_DNi as 'Fotocopia de DNI', Foto4x4 as 'Fotos 4x4', Const_Trabajo as 'Certificado laboral'," +
+                    "constNaci as 'Const. Nacimiento', FechaEntregaDoc as 'Fecha de entrega de documentacion', Observaciones from Inscriptos";
+            if (ar == "select * from  Preinscriptos")
+                ar = "SELECT [DNI],[codcurso],[IDinscripto],[Nombre],[Apellido],[Email],[Telefono],[Turno],[Modalidad] FROM [SASAI].[dbo].[Preinscriptos]";
 
-            }
+
+            return ar;
+            
 
         }
 

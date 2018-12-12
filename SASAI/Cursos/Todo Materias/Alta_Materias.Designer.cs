@@ -68,6 +68,7 @@
             this.txb_PrecioM.Name = "txb_PrecioM";
             this.txb_PrecioM.Size = new System.Drawing.Size(133, 20);
             this.txb_PrecioM.TabIndex = 17;
+            this.txb_PrecioM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_PrecioM_KeyPress);
             // 
             // lbl_nombre_M_Alta
             // 

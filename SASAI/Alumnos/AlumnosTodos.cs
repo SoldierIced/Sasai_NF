@@ -29,13 +29,21 @@ namespace SASAI
         {
             try
             {
-                AlumnosF buscar = new AlumnosF();
-                Formularios.AbrirFormularioHijos(buscar);
-                numtabla = buscar.tablita;
-                ds = new DataSet();
-                cargardata();
-               
-
+                DataSet dtt = new DataSet();
+                AlumnosF F = new AlumnosF();
+                Formularios.AbrirFormularioHijos(F);
+              string aux=  F.consulta;
+                if (F.tablita == 1 || F.tablita == 2) {
+                    numtabla = F.tablita;
+       aq.cargaTabla("cargar",aux,ref dtt);
+                dataGridView1.DataSource = dtt.Tables["cargar"];
+                }
+                else
+                {
+                  //  AlumnoSelecionado af = new AlumnoSelecionado(F.dni, 2);
+                 //   af.ShowDialog();
+                    
+                }
             }
             catch (Exception) { }
         }
@@ -43,6 +51,7 @@ namespace SASAI
         private void AlumnosTodos_Load(object sender, EventArgs e)
         {            
             cargardata();
+            numtabla = 1;
           
         }
 
@@ -55,12 +64,13 @@ namespace SASAI
             {
                 ds = new DataSet();
                 GestionSql aw = new GestionSql();
-                consulta = "select DNI, Nombre, Apellido, UltimoCurso as 'Codigo de ultimo Curso', Email, Telefono, TipoConst as 'Comprobante que trajo'," +
+                consulta = "select top(30) DNI, Nombre, Apellido, UltimoCurso as 'Codigo de ultimo Curso', Email, Telefono, TipoConst as 'Comprobante que trajo'," +
                     " Const_Analitico, Const_Cuil as 'Const. de Cuil',fotoc_DNi as 'Fotocopia de DNI', Foto4x4 as 'Fotos 4x4', Const_Trabajo as 'Certificado laboral'," +
                     "constNaci as 'Const. Nacimiento', FechaEntregaDoc as 'Fecha de entrega de documentacion', Observaciones from Inscriptos";
                 aq.cargaTabla("tabla", consulta, ref ds);
 
                 dataGridView1.DataSource = ds.Tables["tabla"];
+                numtabla = 1;
                 dataGridView1.Columns[7].Visible = false;
                
             }
@@ -82,8 +92,9 @@ namespace SASAI
 
             try
             {
-                string Dni = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
-                AlumnoSelecionado aqr = new AlumnoSelecionado(Dni, 1);
+                
+                string Dni = dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells["DNI"].Value.ToString();
+                AlumnoSelecionado aqr = new AlumnoSelecionado(Dni, numtabla);
                 Formularios.AbrirFormularioHijos(aqr);
                 cargardata();
             }

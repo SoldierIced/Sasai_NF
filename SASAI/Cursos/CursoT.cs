@@ -32,14 +32,15 @@ namespace SASAI
             } catch (Exception) { }
             
         }
-        public void cargargrid() {
+        public void cargargrid(string consulta2 = "select cursos.CodCurso as [Codigo de curso],NombreCurso as Nombre,FechaFinal as [Fecha de Inicio],FechaFinal as[Fecha de finalizacion],CapacidadMax as Capacidad, EspecialidadesXCursos.CodEspecialidad as[Codigo de Especialidad] from cursos inner join EspecialidadesXCursos on cursos.CodCurso=EspecialidadesXCursos.CodCurso") {
             try
             {
+                AccesoDatos ar = new AccesoDatos();
+                dataGridView1.DataSource = null;
+                DataSet t = new DataSet();
+                ar.cargaTabla("Cursos", consulta2, ref t);
 
-                string consulta2 = "select cursos.CodCurso as [Codigo de curso],NombreCurso as Nombre,FechaFinal as [Fecha de Inicio],FechaFinal as[Fecha de finalizacion],CapacidadMax as Capacidad, EspecialidadesXCursos.CodEspecialidad as[Codigo de Especialidad] from cursos inner join EspecialidadesXCursos on cursos.CodCurso=EspecialidadesXCursos.CodCurso";
-                aq.cargaTabla("Cursos", consulta2, ref ds);
-
-                dataGridView1.DataSource = ds.Tables["Cursos"];
+                dataGridView1.DataSource = t.Tables["Cursos"];
                 dataGridView1.Columns["Codigo de Especialidad"].Visible = false;
                 cargarNombreCursos(ref dataGridView1);
                 
@@ -63,27 +64,31 @@ namespace SASAI
             CursoT_Filtrar CursoF = new CursoT_Filtrar();
 
             Formularios.AbrirFormularioHijos(CursoF);
+            if (CursoF.DialogResult == DialogResult.OK) {
+                cargargrid(CursoF.consulta);
+            }
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
             //dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].ToString(); codigo de curso del seleccionado.
             // abrir curso seleccionado.
-            int rowi=dataGridView1.CurrentRow.Index;
+            int rowi = dataGridView1.CurrentRow.Index;
             int celi = dataGridView1.Columns.Count - 1;
             //az(dataGridView1.CurrentRow.Index.ToString());
 
-            if (dataGridView1.CurrentRow.Index>=0)
+            if (dataGridView1.CurrentRow.Index >= 0)
             {
                 Cursos.CursoSeleccionado au = new Cursos.CursoSeleccionado(dataGridView1.Rows[rowi].Cells[0].Value.ToString(),
-dataGridView1.Rows[rowi].Cells[5].Value.ToString()
-// ds.Tables[rowi].Rows[0][1].ToString()
+            dataGridView1.Rows[rowi].Cells[5].Value.ToString()
+                // ds.Tables[rowi].Rows[0][1].ToString()
 
 );
-                Formularios.AbrirFormularioHijos(au);
+                Formularios.AbrirFormularioPadre(au);
             }
-           
-            }
+
+        }
     }
 }

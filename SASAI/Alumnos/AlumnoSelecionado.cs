@@ -364,7 +364,7 @@ namespace SASAI
 
                                 if (CursarCursoActual.Checked == true)
                                 {
-                                    string asd = "select COUNT(legajo) from AlumnosxMateriasxCursos where legajo=" + saberlegajo(tb_DNI.Text);
+                                    string asd = "select COUNT(legajo) from AlumnosxMateriasxCursos where legajo=" + saberlegajo(tb_DNI.Text)+"and codcurso="+codcurso;
                                     DataSet dt = new DataSet();
                                     aq.cargaTabla("queseyo222", asd, ref dt);
                                     if (dt.Tables["queseyo222"].Rows[0][0].ToString() == "0") { CargaCursoAcutal(); }
@@ -463,7 +463,7 @@ namespace SASAI
 
 
         public int verificarAprobadaMateria(string codmaa,string legajo,string idinscripto,
-            string codcurso,string modalidad,string turno) {
+            string codcurso,string modalidad,string turno,string fecha) {
             SqlCommand comando = new SqlCommand();
             AccesoDatos aq = new AccesoDatos();
             //( @legajo int ,@codmateria varchar (40) , @idinscripto int,@codcurso varchar(40)
@@ -483,6 +483,8 @@ namespace SASAI
             SqlParametros.Value = turno;
             SqlParametros = comando.Parameters.Add("@user", SqlDbType.NVarChar, 40);
             SqlParametros.Value = Formularios.Usuario;
+            SqlParametros = comando.Parameters.Add("@fechita", SqlDbType.Date);
+            SqlParametros.Value = fecha;
             aq.ConfigurarProcedure(ref comando, "VerificarMateriaPosta");
             comando.Connection = aq.ObtenerConexion();
             SqlDataReader reader = comando.ExecuteReader();
@@ -522,6 +524,7 @@ namespace SASAI
             DataSet ar = new DataSet();
             string codespe = "";
             string codcurso = "";
+            string fecha_venci = "";
             string[] materias;
            
             try {
@@ -543,6 +546,10 @@ namespace SASAI
              //  MessageBox.Show(consulta);
                 aq.cargaTabla("cursoespecifico", consulta, ref ar);
              codcurso = ar.Tables["cursoespecifico"].Rows[0][0].ToString();
+             fecha_venci = ar.Tables["cursoespecifico"].Rows[0][2].ToString();
+                DateTime a = new DateTime();
+               a= DateTime.Parse(fecha_venci);
+               fecha_venci= a.ToShortDateString();
                      }
             catch (Exception ex)
             {
@@ -579,21 +586,24 @@ namespace SASAI
 
             for (int i = 0; i < ar.Tables["materiasxcurso"].Rows.Count; i++) {
 
-                Alumnos.inscripcionmaterias im = new Alumnos.inscripcionmaterias(materias[i]);
-                if (im.ShowDialog() == DialogResult.OK)
-                {
+                try {
+                    Alumnos.inscripcionmaterias im = new Alumnos.inscripcionmaterias(materias[i]);
+                    if (im.ShowDialog() == DialogResult.OK)
+                    {
 
-                    verificarAprobadaMateria(materias[i], ds.Tables["123123"].Rows[0][0].ToString(),
-                        inscriptonumero(codcurso, "001"), codcurso, im.modalidad, im.turno);
+                        verificarAprobadaMateria(materias[i], ds.Tables["123123"].Rows[0][0].ToString(),
+                            inscriptonumero(codcurso, "001"), codcurso, im.modalidad, im.turno,fecha_venci);
 
 
-                }
-                else
-                {
-                    verificarAprobadaMateria(materias[i], ds.Tables["123123"].Rows[0][0].ToString(),
-                           inscriptonumero(codcurso, "001"), codcurso, "MODALIDAD NO CARGADA", "TURNO NO CARGADO");
+                    }
+                    else
+                    {
+                        verificarAprobadaMateria(materias[i], ds.Tables["123123"].Rows[0][0].ToString(),
+                               inscriptonumero(codcurso, "001"), codcurso, "MODALIDAD NO CARGADA", "TURNO NO CARGADO", fecha_venci);
 
-                }
+                    }
+                } catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+                
 
 
                 }
@@ -661,7 +671,7 @@ namespace SASAI
 
         private void matricularACursoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Alumnos.matricularcurso ao = new Alumnos.matricularcurso(ds.Tables["123123"].Rows[0][0].ToString());
+          
         }
 
         private void editarDatosToolStripMenuItem_Click(object sender, EventArgs e)

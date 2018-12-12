@@ -97,6 +97,19 @@ namespace SASAI
                     error += cont + ") " + "El curso debe tener por lo menos alguna materia cargada" + b;
                 }
 
+              //  MessageBox.Show(dateTimePicker1.Value.ToShortDateString());
+
+                DateTime f1 = new DateTime();
+                DateTime f2 = new DateTime();
+                f1 =  DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
+                f2 =  DateTime.Parse(dateTimePicker2.Value.ToShortDateString());
+                if (f1 >= f2) {
+
+                    cont++;
+                    guardar = false;
+                    error += cont + ") " + "La fecha de finalizacion del curso debe ser menor a la del inicio." + b;
+                }
+
 
             }
             catch (Exception ex) {
@@ -176,7 +189,16 @@ namespace SASAI
 
 
         }
+        int verificarlistbox(ListBox a,string val) {
 
+            for (int i = 0; i < a.Items.Count; i++)
+            {
+                if(a.Items[i].ToString() ==val)
+                    return i;
+            }
+
+            return -1;
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             Listar_Materias mate = new Listar_Materias();
@@ -187,6 +209,7 @@ namespace SASAI
                 for (int i = 0; i < mate.tam; i++)
                 {
                     //insertar cada codigo en el listBox1
+                    if(verificarlistbox(listBox1,mate.NombreM[i])==-1)
                     listBox1.Items.Add(mate.NombreM[i]);
                     //MessageBox.Show(mate.codigo[i]);
                 }

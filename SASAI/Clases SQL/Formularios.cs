@@ -33,7 +33,7 @@ namespace SASAI
 
         public static void AbrirFormularioPadre (Form x) {
 
-            cerrarFormularioHijo();
+      //      cerrarFormularioHijo();
             x.MdiParent = DIOS;
             x.WindowState = FormWindowState.Maximized;
             x.ControlBox = false;

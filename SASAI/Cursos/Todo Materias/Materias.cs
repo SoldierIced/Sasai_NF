@@ -18,6 +18,7 @@ namespace SASAI
             InitializeComponent();
         }
         public static String Variable;
+        public int bloqueado = 0;
         private void cargarGrid()
         {
             AccesoDatos aq = new AccesoDatos();
@@ -49,9 +50,10 @@ namespace SASAI
                 txb_ID_M.Text = ListadoMaterias.Rows[0].Cells[0].Value.ToString();
                 txb_NOMBRE_M.Text = ListadoMaterias.Rows[0].Cells[1].Value.ToString();
                 txb_PRECIO_M.Text = ListadoMaterias.Rows[0].Cells[2].Value.ToString();
+                bloqueado = 0;
             }
             catch (Exception) { }
-
+            read();
           
         }
 
@@ -90,7 +92,9 @@ namespace SASAI
                 AccesoDatos aq = new AccesoDatos();
                 DataSet ds = new DataSet();
                 aq.cargaTabla("Materias", consulta, ref ds);
+               
                 ListadoMaterias.DataSource = ds.Tables["Materias"];
+                
             }
             catch (Exception) { }
             //cargarGrid();
@@ -98,30 +102,44 @@ namespace SASAI
 
         private void btn_Modificar_M_Click(object sender, EventArgs e)
         {
-
-
-
-            AccesoDatos aq = new AccesoDatos();
-            SqlCommand comando = new SqlCommand();
-
-            try
+            if (bloqueado == 0)
             {
+                bloqueado = 1;
+                read();
 
-                
+            }
+            else {
+                AccesoDatos aq = new AccesoDatos();
+                SqlCommand comando = new SqlCommand();
 
+                try
+                {
+
+                    float foo =float.Parse( txb_PRECIO_M.Text.Replace(".",","));
+                    decimal bar = Convert.ToDecimal(foo);
+                    bar = Math.Round(bar, 2);
+                    txb_PRECIO_M.Text = bar.ToString();
+                   // MessageBox.Show(txb_PRECIO_M.Text);
                     comando = DatosSP.MateriasCarga(txb_ID_M.Text, txb_NOMBRE_M.Text, txb_PRECIO_M.Text
                         , int.Parse(n1.Value.ToString()), int.Parse(n2.Value.ToString()), int.Parse(n3.Value.ToString()));
 
                     aq.EjecutarProcedimientoAlmacenado(comando, "MateriaModificacion");
                     cargarGrid();
-                
-                
-              
+                    MessageBox.Show("Materia modificada correctamente.");
+                    bloqueado = 0;
+                    read();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+               
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+
+
+           
         }
 
         private void Materias_Resize(object sender, EventArgs e)
@@ -166,19 +184,55 @@ namespace SASAI
 
         }
 
+        void read() {
+
+            if (bloqueado == 0)
+            {
+                txb_ID_M.ReadOnly = true;
+                txb_NOMBRE_M.ReadOnly = true;
+                txb_PRECIO_M.ReadOnly = true;
+                n1.ReadOnly = true;
+                n2.ReadOnly = true;
+                
+
+
+            }
+            else {
+                txb_ID_M.ReadOnly = false;
+                txb_NOMBRE_M.ReadOnly = false;
+                txb_PRECIO_M.ReadOnly = false;
+                n1.ReadOnly = false;
+                n2.ReadOnly = false;
+            }
+
+
+
+        }
+      
         private void ListadoMaterias_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            ListadoMaterias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            try
+            {
+                ListadoMaterias.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                float foo = float.Parse(ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[2].Value.ToString());
+                decimal bar = Convert.ToDecimal(foo);
+                bar = Math.Round(bar, 2);
+                txb_PRECIO_M.Text = bar.ToString();
+
+                txb_ID_M.Text = ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[0].Value.ToString();
+                txb_NOMBRE_M.Text = ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[1].Value.ToString();
+
+                n1.Value = int.Parse(ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[3].Value.ToString());
+                n2.Value = int.Parse(ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[4].Value.ToString());
+                n3.Value = int.Parse(ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[5].Value.ToString());
 
 
-            txb_ID_M.Text = ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[0].Value.ToString();
-            txb_NOMBRE_M.Text = ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[1].Value.ToString();
-            txb_PRECIO_M.Text = ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[2].Value.ToString();
-            n1.Value = int.Parse(ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[3].Value.ToString());
-            n2.Value = int.Parse(ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[4].Value.ToString());
-            n3.Value = int.Parse(ListadoMaterias.Rows[ListadoMaterias.CurrentRow.Index].Cells[5].Value.ToString());
+            }
+            catch (Exception)
+            {
 
-
+             
+            }
 
         }
 
