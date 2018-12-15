@@ -37,7 +37,8 @@ namespace SASAI
                 AccesoDatos aq = new AccesoDatos();
                 DataSet ds = new DataSet();
                 aq.cargaTabla("Controlweaa", consulta, ref ds);
-                dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.DataSource = ds.Tables["Controlweaa"];
+
             }
             catch (Exception) { }
 
@@ -47,10 +48,10 @@ namespace SASAI
         {
             AccesoDatos aq = new AccesoDatos();
             DataSet ds = new DataSet();
-            string consulta = "select * from controlpreinscriptos";
+            string consulta = "select top(100) TipoTrn as [Tipo de transaccion],Tabla,PK as [Claves primarias],Campo as [Campo Modificado], ValorOriginal,ValorNuevo,FechaTrn as [Fecha de Modificacion],Usuario from ControlPreinscriptos order by (FechaTrn) desc";
             aq.cargaTabla("Controlweaa", consulta, ref ds);
 
-            dataGridView1.DataSource = ds.Tables[0];
+            dataGridView1.DataSource = ds.Tables["Controlweaa"];
 
         }
 

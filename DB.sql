@@ -173,58 +173,6 @@ references AlumnosxMateriasxCursos (legajo,Codmateria,codcurso)
 go
 -----------------------carga valores tabla---------------------------------------------------------------------------------
 
-insert into usuarios (usuario,contrasena,acceso,baja)
-select 'admin','',6,1 union
-select 'nehuen','123',10,0 union 
-select 'pedron','123',9,1 union
-select 'leandro','123',8,0 union
-select 'mariano','123',5,0 union
-select 'batman','123',7,0 union
-select 'robin','123',6,1 
-
-go
-
-select * from EspecialidadesXCursos
-go
-
---insert into Especialidades(Codespecialidad,nombre,AniosAprox)
---select '001','Tecnicatura Superior en Programacion',2 union
---select '002','Tecnicatura Superior en Sistemas Informaticos',1 union
---select '003','Ingenieria Mecanica',5 union
---select '004','Ingenieria Electrica',5 union
---select '005','Ingenieria Civil',5
---go
-
---insert into Materias(CodMateria,NombreMateria,Monto)
---select '001','Matematica',800 union
---select '002','Introduccion a la Programacion',800 union
---select '003','Introduccion a la Informatica',600
---go
-
---insert into Cursos(CodCurso,FechaInicio,FechaFinal,Nota_Min,CapacidadMax,actual)
---select '001','10/04/2018','09/06/2018',6,100,0 union
---select '002','10/06/2018','09/08/2018',6,100,1 union
---select '003','10/08/2018','10/10/2018',6,100,0 
---go
-
---insert into EspecialidadesXCursos(CodCurso,CodEspecialidad)
---select '001','001' union
---select '002','001' union
---select '003','001' union
---select '002','002' 
---go
-
-
-insert into Interesados select '','','','',GETDATE()
-go
-
-
---delete Interesados
---insert into Inscriptos(DNI,Nombre,Apellido,UltimoCurso,Email,Telefono,Activo,Const_Analitico,Const_Cuil,Fotoc_DNI,Foto4x4,Const_Trabajo,FechaEntregaDoc,TipoConst)
---select 40459112, 'leandro', 'arroyo', '002', 'martin_arroyo@hotmail.es', 1161595480, 1, 1, 1, 1, 1,1, '15/07/2018','Cursando Ultimo Año' union
---select 40459113, 'mariano', 'perez', '002', 'martin_arroyo97@hotmail.com', 1161595481, 1, 1, 1, 1, 1,1, '15/07/2018','AFK' union
---select 40459114, 'nehuen', 'fortes', '002', 'calladitobienslow@gmail.com', 1161595482, 1, 1, 1, 1, 1,1, '15/07/2018','CDC'
---go
 ---------------------------- procedure------------------------------------------------------------------------------------
 create procedure VerificarPreinscripto (
 @DNI int)
@@ -814,7 +762,7 @@ while @field < @maxfield
      SELECT @fieldname = COLUMN_NAME 
       FROM INFORMATION_SCHEMA.COLUMNS 
 	  WHERE TABLE_NAME = @TableName and ORDINAL_POSITION = @field
-     SELECT @sql = 'insert ControlAlumxMatexCurso (TipoTrn, Tabla, PK, Campo, ValorOriginal, ValorNuevo, FechaTrn, Usuario)'
+     SELECT @sql = 'insert ControlPreinscriptos (TipoTrn, Tabla, PK, Campo, ValorOriginal, ValorNuevo, FechaTrn, Usuario)'
      SELECT @sql = @sql + 	' SELECT ''' + @Type + ''''
      SELECT @sql = @sql + 	',''' + @TableName + ''''
      SELECT @sql = @sql + 	',' + @PKSelect
@@ -850,12 +798,3 @@ end
 
 go
 
-
-insert into Materias 
-select '001','Matematica',700,2,2,1 union
-select '002','Introduccion a la Programacion',700,2,2,1 union
-select '003','Introduccion a la Informatica',700,2,2,1 
-insert into Especialidades
-select '001','Tecnico Superior en Programacion',2
-
-select * from AlumnosxMateriasxCursos

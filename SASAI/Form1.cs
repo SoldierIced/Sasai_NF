@@ -85,7 +85,7 @@ namespace SASAI
 
         private void interesadosToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            Formularios.AbrirFormularioPadre(new Interesados());
+            Formularios.AbrirFormularioHijos(new Interesados());
 
 
         }

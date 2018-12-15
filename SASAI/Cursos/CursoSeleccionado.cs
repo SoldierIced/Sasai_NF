@@ -110,7 +110,7 @@ namespace SASAI.Cursos
                 } // carga de columnas y nombres de materias
 
                 //monto y observacion  y posiblemente email
-                int pos = 0;
+                
                 dataGridView1.Columns.Add("Monto a Abonar", "Monto a Abonar");
                 dataGridView1.Columns.Add("Observaciones", "Observaciones");
                 dataGridView1.Columns["Monto a Abonar"].ReadOnly = true;

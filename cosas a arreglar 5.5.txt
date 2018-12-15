@@ -1,0 +1,14 @@
+----------------------------------------------------------------------------------------------
+reportes
+1) listado de alumnos aprobados x curso y x turno x materia x modalidad con:
+   nombre y apellido, dni nota en cada materia, email y observacion.
+
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

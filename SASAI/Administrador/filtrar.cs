@@ -38,21 +38,21 @@ namespace SASAI
             int num = 0;
             if (ar == string.Empty)
             {
-                ar = "select * from ";
+                ar = "select TipoTrn as [Tipo de transaccion],Tabla,PK as [Claves primarias],Campo as [Campo Modificado], ValorOriginal,ValorNuevo,FechaTrn as [Fecha de Modificacion],Usuario from ControlPreinscriptos";
 
-                ar += listBox1.SelectedItem.ToString() + " ";
+               
             }
 
             if (textBox1.Text != string.Empty) {
                 if (num != 0) { ar += d1; num = 0; }
                 else { ar += " where "; }
-                ar += " Usuario = '" + textBox1.Text + "' ";
+                ar += " Usuario like '%" + textBox1.Text + "%' ";
                 num++;
             }
             if (textBox2.Text != string.Empty) {
                 if (num != 0) { ar += d1; num = 0; }
                 else { ar += " where "; }
-                ar += "  FechaTrn = '" + textBox2.Text + "' ";
+                ar += "  FechaTrn like '%" + textBox2.Text + "%' ";
                 num++;
             }
 
@@ -60,7 +60,7 @@ namespace SASAI
             {
                 if (num != 0) { ar += d1; num = 0; }
                 else { ar += " where "; }
-                ar += "  Campo = '" + textBox3.Text + "' ";
+                ar += "  Campo like '%" + textBox3.Text + "%' ";
                 num++;
 
             }
@@ -73,12 +73,28 @@ namespace SASAI
                 num++;
 
             }
-            if (listBox2.SelectedIndex != -1) {
+            if (textBox5.Text != string.Empty)
+            {
+                if (num != 0) { ar += d1; num = 0; }
+                else { ar += " where "; }
+                ar += " ValorNuevo   like '%" + textBox5.Text + "%' ";
+                num++;
+
+            }
+            if (textBox6.Text != string.Empty)
+            {
+                if (num != 0) { ar += d1; num = 0; }
+                else { ar += " where "; }
+                ar += " ValorOriginal   like '%" + textBox6.Text + "%' ";
+                num++;
+
+            }
+            if (comboBox1.SelectedIndex != -1) {
                 if (num != 0) { ar += d1; num = 0; }
                 else { ar += " where "; }
                 string numeritolist = "";
-                if (listBox2.SelectedIndex == 0) { numeritolist = "I"; }
-                else if (listBox2.SelectedIndex == 1) { numeritolist = "U"; }
+                if (comboBox1.SelectedIndex == 0) { numeritolist = "I"; }
+                else if (comboBox1.SelectedIndex == 1) { numeritolist = "U"; }
                 else { numeritolist = "D"; }
 
                 ar += "  TipoTrn = '" + numeritolist + "' ";
@@ -89,9 +105,22 @@ namespace SASAI
 
         private void filtrar_Load(object sender, EventArgs e)
         {
-            listBox1.Items.Add("ControlPreinscriptos");
-            listBox1.Items.Add("ControlAlumxMatexCurso");
-            listBox1.SelectedIndex = 0;
+          
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
