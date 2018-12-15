@@ -1,8 +1,14 @@
 Auditoria---------------------------------------
 Esconder lo del control de tablas o hacerlo lindo.
 Interesados--------------------------------------
-esta todo mal, tendria que poder agregarse valores, editar los que ya estan y eliminar.
-no poder poner un email que ya es alumno.= dar aviso 
+0% hecho
+
+1: cargar grid con los que ya esten en la base de datos.
+button de alta de interesado
+permitir modificar los datos del grid::
+que se puedan seleccionar y borrar  // eventoq ue pinte de color las celdas a borrar
+validar que no esten en inscriptos los emails
+
 ----------------------------------------------------------------------------------------------
 reportes
 1) listado de alumnos aprobados x curso y x turno x materia x modalidad con:

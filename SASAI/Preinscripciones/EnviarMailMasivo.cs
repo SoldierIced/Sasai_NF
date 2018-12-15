@@ -87,7 +87,7 @@ namespace SASAI
             {
                 //Enviamos el mensaje      
                 cliente.Send(mmsg);
-                MessageBox.Show("Enviado correctamente a: " + email);
+              //  MessageBox.Show("Enviado correctamente a: " + email);
                 return "1";
             }
             catch (System.Net.Mail.SmtpException ex)

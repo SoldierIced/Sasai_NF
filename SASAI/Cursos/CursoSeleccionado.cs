@@ -312,9 +312,34 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
             dataGridView1.Height = this.Height -177;
         }
 
+        string conseguiremail(string legajo) {
+
+            AccesoDatos aq = new AccesoDatos();
+            DataSet dt = new DataSet();
+            aq.cargaTabla("asd", "select email from inscriptos where legajo='" + legajo + "'", ref dt);
+           return dt.Tables["asd"].Rows[0][0].ToString();
+
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            Clases_SQL.Excel.exportar(dataGridView1);
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                gv_v2.Columns.Add(dataGridView1.Columns[i].HeaderText, dataGridView1.Columns[i].HeaderText);
+
+            gv_v2.Columns.Add("Email", "Email");
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                gv_v2.Rows.Add();
+                for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                {
+                    gv_v2.Rows[i].Cells[j].Value = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                }
+                gv_v2.Rows[i].Cells["Email"].Value = conseguiremail(gv_v2.Rows[i].Cells["Legajo"].Value.ToString());
+                //     gv_v2.Rows[i].Cells["Email"].Value = conseguiremail(gv_v2.Rows[i].Cells["Legajo"].Value.ToString());
+            }
+
+
+            Clases_SQL.Excel.exportar(gv_v2);
         }
     }
     

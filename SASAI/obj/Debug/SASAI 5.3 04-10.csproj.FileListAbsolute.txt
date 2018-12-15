@@ -76,3 +76,42 @@ C:\Users\Arroyo\Desktop\sasai 2019\SASAI\obj\Debug\SASAI 5.3 04-10.csproj.Genera
 C:\Users\Arroyo\Desktop\sasai 2019\SASAI\obj\Debug\SASAI 5.3 04-10.csproj.CoreCompileInputs.cache
 C:\Users\Arroyo\Desktop\sasai 2019\SASAI\obj\Debug\SASAI.exe
 C:\Users\Arroyo\Desktop\sasai 2019\SASAI\obj\Debug\SASAI.pdb
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\bin\Debug\SASAI.exe.config
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\bin\Debug\SASAI.exe
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\bin\Debug\SASAI.pdb
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI 5.3 04-10.csprojAssemblyReference.cache
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI 5.3 04-10.csproj.ResolveComReference.cache
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.ABMAdministrador.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.BajayModificacionAdministrador.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.AlumnoSelecionado.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.AlumnosTodos.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.AlumnosF.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Auditoria.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Alumnos.CursadaAlumno.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Alumnos.inscripcionmaterias.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Alta_Curso.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Cursos.CursoSeleccionado.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Cursos.SubirNotas.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Alta_Materias.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.CursoT.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.CursoT_Filtrar.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Flt_Materias.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Listar_Materias.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Materias.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.EnviarMailMasivo.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Alta_Especialidad.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Especialidades.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Especialidad_F.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.BajaPreinscriptos.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.filtrar.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Form1.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Interesados.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Preinscripciones.Confirmacion.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.ImportarExcel.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Login.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Properties.Resources.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.UsuariosModificacion.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI 5.3 04-10.csproj.GenerateResource.cache
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI 5.3 04-10.csproj.CoreCompileInputs.cache
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.exe
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.pdb

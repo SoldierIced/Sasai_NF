@@ -38,7 +38,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(450, 73);
+            this.button1.Location = new System.Drawing.Point(424, 73);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 39);
             this.button1.TabIndex = 8;
@@ -86,7 +86,7 @@
             this.btn_enviarEmail.Name = "btn_enviarEmail";
             this.btn_enviarEmail.Size = new System.Drawing.Size(122, 39);
             this.btn_enviarEmail.TabIndex = 11;
-            this.btn_enviarEmail.Text = "Enviar Mail a Todos los Inscriptos";
+            this.btn_enviarEmail.Text = "Enviar Mail Masivo";
             this.btn_enviarEmail.UseVisualStyleBackColor = true;
             this.btn_enviarEmail.Click += new System.EventHandler(this.btn_enviarEmail_Click);
             // 

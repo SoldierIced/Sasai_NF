@@ -44,7 +44,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
+            this.gv_v2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_v2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -193,11 +195,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // gv_v2
+            // 
+            this.gv_v2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gv_v2.Location = new System.Drawing.Point(47, 136);
+            this.gv_v2.Name = "gv_v2";
+            this.gv_v2.Size = new System.Drawing.Size(33, 33);
+            this.gv_v2.TabIndex = 17;
+            this.gv_v2.Visible = false;
+            // 
             // CursoSeleccionado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 388);
+            this.Controls.Add(this.gv_v2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox5);
@@ -219,6 +231,7 @@
             this.Load += new System.EventHandler(this.CursoSeleccionado_Load);
             this.Resize += new System.EventHandler(this.CursoSeleccionado_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_v2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,5 +254,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView gv_v2;
     }
 }

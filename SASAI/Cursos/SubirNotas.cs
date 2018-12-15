@@ -363,8 +363,18 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
 
         }
 
+        string conseguiremail(string legajo)
+        {
+
+            AccesoDatos aq = new AccesoDatos();
+            DataSet dt = new DataSet();
+            aq.cargaTabla("asd", "select email from inscriptos where legajo='" + legajo + "'", ref dt);
+            return dt.Tables["asd"].Rows[0][0].ToString();
+
+        }
         private void button2_Click(object sender, EventArgs e)
         {
+                 
             Clases_SQL.Excel.exportar(dataGridView1);
         }
     }

@@ -29,14 +29,12 @@ namespace SASAI.Clases_SQL
                         (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
 
                     //Recorremos los headers del datagrid
-                    for (int i = 0; i < grd.Rows.Count - 1; i++)
-                    {
-                      
+                     
                         for (int j = 0; j < grd.Columns.Count; j++)
                         {
-                            hoja_trabajo.Cells[i + 1, j+1] = grd.Columns[j].HeaderText;
+                            hoja_trabajo.Cells[1 , j+1] = grd.Columns[j].HeaderText;
                         }
-                    }
+                    
 
                     //Recorremos el DataGridView rellenando la hoja de trabajo
 
