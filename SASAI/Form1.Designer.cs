@@ -83,21 +83,21 @@
             // cursoActualToolStripMenuItem
             // 
             this.cursoActualToolStripMenuItem.Name = "cursoActualToolStripMenuItem";
-            this.cursoActualToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cursoActualToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.cursoActualToolStripMenuItem.Text = "Actual";
             this.cursoActualToolStripMenuItem.Click += new System.EventHandler(this.cursoActualToolStripMenuItem_Click);
             // 
             // todosToolStripMenuItem
             // 
             this.todosToolStripMenuItem.Name = "todosToolStripMenuItem";
-            this.todosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.todosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.todosToolStripMenuItem.Text = "Todos";
             this.todosToolStripMenuItem.Click += new System.EventHandler(this.todosToolStripMenuItem_Click);
             // 
             // altaNuevoCursoToolStripMenuItem
             // 
             this.altaNuevoCursoToolStripMenuItem.Name = "altaNuevoCursoToolStripMenuItem";
-            this.altaNuevoCursoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.altaNuevoCursoToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.altaNuevoCursoToolStripMenuItem.Text = "Alta Nuevo Curso";
             this.altaNuevoCursoToolStripMenuItem.Click += new System.EventHandler(this.altaNuevoCursoToolStripMenuItem_Click);
             // 
@@ -114,14 +114,14 @@
             // todosLosAlumnosToolStripMenuItem
             // 
             this.todosLosAlumnosToolStripMenuItem.Name = "todosLosAlumnosToolStripMenuItem";
-            this.todosLosAlumnosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.todosLosAlumnosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.todosLosAlumnosToolStripMenuItem.Text = "Todos los Alumnos";
             this.todosLosAlumnosToolStripMenuItem.Click += new System.EventHandler(this.todosLosAlumnosToolStripMenuItem_Click);
             // 
             // interesadosToolStripMenuItem
             // 
             this.interesadosToolStripMenuItem.Name = "interesadosToolStripMenuItem";
-            this.interesadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.interesadosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.interesadosToolStripMenuItem.Text = "Interesados";
             this.interesadosToolStripMenuItem.Click += new System.EventHandler(this.interesadosToolStripMenuItem_Click_1);
             // 
@@ -138,7 +138,7 @@
             // materiasToolStripMenuItem1
             // 
             this.materiasToolStripMenuItem1.Name = "materiasToolStripMenuItem1";
-            this.materiasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.materiasToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
             this.materiasToolStripMenuItem1.Text = "Materias";
             this.materiasToolStripMenuItem1.Click += new System.EventHandler(this.materiasToolStripMenuItem1_Click);
             // 
@@ -147,7 +147,7 @@
             this.especialidadesToolStripMenuItem.Enabled = false;
             this.especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
             this.especialidadesToolStripMenuItem.ShowShortcutKeys = false;
-            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.especialidadesToolStripMenuItem.Text = "Especialidades";
             this.especialidadesToolStripMenuItem.Click += new System.EventHandler(this.especialidadesToolStripMenuItem_Click);
             // 
@@ -232,7 +232,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(755, 420);
             this.Controls.Add(this.menuStrip1);

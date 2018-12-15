@@ -55,7 +55,7 @@ namespace SASAI
             estadistcasToolStripMenuItem.Visible = false;
             darBajaAPreinscriptosToolStripMenuItem.Visible = false;
             especialidadesToolStripMenuItem.Visible = false;
-        }
+                   }
 
         private void todosToolStripMenuItem_Click(object sender, EventArgs e)
         {
