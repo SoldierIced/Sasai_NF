@@ -170,7 +170,7 @@ namespace SASAI
 
         private void mANDARMAILToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // Formularios.AbrirFormularioHijos(new EnviarMailMasivo());
+           
         }
 
         private void listarPreinscriptosEInscriptosToolStripMenuItem_Click(object sender, EventArgs e)

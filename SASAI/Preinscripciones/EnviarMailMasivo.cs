@@ -73,12 +73,12 @@ namespace SASAI
                 new System.Net.NetworkCredential(txb_Mail.Text, txb_pass.Text);
 
             //Lo siguiente es obligatorio si enviamos el mensaje desde Gmail
-            // /*
+            ///*
             cliente.Port = 25;
             cliente.EnableSsl = true;
             //*/
-
-            cliente.Host = "smtp.live.com"; //Para Gmail "smtp.gmail.com";
+            //Para Hotmail "smtp.live.com"; //Para Gmail "smtp.gmail.com";
+            cliente.Host = "outlook.office365.com"; 
 
 
             /*-------------------------ENVIO DE CORREO----------------------*/
@@ -87,6 +87,7 @@ namespace SASAI
             {
                 //Enviamos el mensaje      
                 cliente.Send(mmsg);
+                MessageBox.Show("Enviado correctamente a: " + email);
                 return "1";
             }
             catch (System.Net.Mail.SmtpException ex)
@@ -105,6 +106,7 @@ namespace SASAI
             int cont = 0;
 
             for (int i = 0; i < dataGridView1.Rows.Count; i++) {
+                
                 if (dataGridView1.Rows[i].Cells[column].Value.ToString() != "")
                     if (MandarEmail(dataGridView1.Rows[i].Cells[column].Value.ToString()) != "1")
                     {
@@ -118,6 +120,11 @@ namespace SASAI
 
                 label1.Text = "Emails Enviados: " + cont + "/" + dataGridView1.Rows.Count;
             }
+            label1.Text = "Emails Enviados: ";
+            txb_asunto.Text = "";
+            txb_Mail.Text = "";
+            txb_Mensaje.Text = "";
+            txb_pass.Text = "";
         }
 
         private void txb_pass_KeyPress(object sender, KeyPressEventArgs e)

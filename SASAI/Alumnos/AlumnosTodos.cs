@@ -104,5 +104,10 @@ namespace SASAI
 
             
         }
+
+        private void btn_enviarEmail_Click(object sender, EventArgs e)
+        {
+            Formularios.AbrirFormularioHijos(new EnviarMailMasivo(dataGridView1, 4));
+        }
     }
 }
