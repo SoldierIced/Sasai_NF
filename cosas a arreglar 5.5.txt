@@ -1,14 +1,1 @@
-----------------------------------------------------------------------------------------------
-reportes
-1) listado de alumnos aprobados x curso y x turno x materia x modalidad con:
-   nombre y apellido, dni nota en cada materia, email y observacion.
-
--------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
+FALTA OPCION DE PODER ASIGNAR CURSO ACTUAL  EN CUALQUIER MOMENTO... EJ : CREE UN CURSO Y POR ACCIDENTE NO LE PUSE QUE ERA EL ACTUAL. Y QUIERO PONERLE EL ACTUAL .... ESO.

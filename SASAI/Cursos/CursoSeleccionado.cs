@@ -341,6 +341,19 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
 
             Clases_SQL.Excel.exportar(gv_v2);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Formularios.AbrirFormularioHijos(new Cursos.ReportesxCurso(codcurso));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
     
 }

@@ -41,6 +41,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +81,12 @@
     </Compile>
     <Compile Include="Cursos\CursoSeleccionado.Designer.cs">
       <DependentUpon>CursoSeleccionado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cursos\ReportesxCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cursos\ReportesxCurso.Designer.cs">
+      <DependentUpon>ReportesxCurso.cs</DependentUpon>
     </Compile>
     <Compile Include="Cursos\SubirNotas.cs">
       <SubType>Form</SubType>
@@ -263,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cursos\CursoSeleccionado.resx">
       <DependentUpon>CursoSeleccionado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cursos\ReportesxCurso.resx">
+      <DependentUpon>ReportesxCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cursos\SubirNotas.resx">
       <DependentUpon>SubirNotas.cs</DependentUpon>

@@ -116,3 +116,4 @@ C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI 5.3 04-10.csproj.CoreCom
 C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.exe
 C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.pdb
 C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Alumnos.NuevoInteresado.resources
+C:\Users\Nehue\Desktop\Final v5.5\SASAI\obj\Debug\SASAI.Cursos.ReportesxCurso.resources
