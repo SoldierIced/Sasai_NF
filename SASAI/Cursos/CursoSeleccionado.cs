@@ -180,7 +180,11 @@ namespace SASAI.Cursos
             }
             catch (Exception ex) { az(ex.ToString()); }
 
-           
+            //Cargo el checkbox con la tilde o no dependendiendo si estaba asignado a actual o no
+            string actual = saberCursoActual(textBox1.Text);
+            if(actual == "1") { chk_Cactual.Checked = true; }
+            else{ chk_Cactual.Checked = false; }
+            
         }
         public int pasardestringaint(string val) {
             string doble = val;
@@ -227,6 +231,19 @@ namespace SASAI.Cursos
                 string consulta2 = "select Codespecialidad from Especialidades where nombre='" + nombre + "'";
                 aq.cargaTabla("consulta22", consulta2, ref ds);
                 return ds.Tables["consulta22"].Rows[0][0].ToString();
+            }
+            catch (Exception) { return ""; }
+
+        }
+
+        public string saberCursoActual(string nombre)
+        {
+
+            try
+            {
+                string consulta2 = "select actual from Cursos where CodCurso = '" + nombre + "'";
+                aq.cargaTabla("actual", consulta2, ref ds);
+                return ds.Tables["actual"].Rows[0][0].ToString();
             }
             catch (Exception) { return ""; }
 
@@ -353,6 +370,20 @@ int.Parse(dataGridView1.Rows[row].Cells[cell].Value.ToString()) >= 0)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void chk_Cactual_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            AccesoDatos sas = new AccesoDatos();
+            string codCurso= textBox1.Text;
+            string consulta = "UPDATE Cursos SET actual = ";
+            //si selecciona que sea actual se actualiza en bd
+            if (chk_Cactual.Checked == true) {consulta += " 1 WHERE CodCurso = '"+ codCurso + "'";}
+            //si Deselecciona que sea actual se actualiza en bd
+            else { consulta += " 0 WHERE CodCurso = '" + codCurso + "'"; }
+            //actualizar en bd
+            aq.cargaTabla("actualizarActual", consulta, ref ds);
         }
     }
     

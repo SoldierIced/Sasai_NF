@@ -46,6 +46,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.gv_v2 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
+            this.chk_Cactual = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_v2)).BeginInit();
             this.SuspendLayout();
@@ -215,11 +217,32 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // chk_Cactual
+            // 
+            this.chk_Cactual.AutoSize = true;
+            this.chk_Cactual.Location = new System.Drawing.Point(570, 67);
+            this.chk_Cactual.Name = "chk_Cactual";
+            this.chk_Cactual.Size = new System.Drawing.Size(15, 14);
+            this.chk_Cactual.TabIndex = 19;
+            this.chk_Cactual.UseVisualStyleBackColor = true;
+            this.chk_Cactual.CheckedChanged += new System.EventHandler(this.chk_Cactual_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(491, 67);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 13);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Curso Actual: ";
+            // 
             // CursoSeleccionado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 388);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.chk_Cactual);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.gv_v2);
             this.Controls.Add(this.button2);
@@ -268,5 +291,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView gv_v2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox chk_Cactual;
+        private System.Windows.Forms.Label label8;
     }
 }
