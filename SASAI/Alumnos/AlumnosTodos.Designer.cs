@@ -88,6 +88,7 @@
             this.btn_enviarEmail.TabIndex = 11;
             this.btn_enviarEmail.Text = "Enviar Mail Masivo";
             this.btn_enviarEmail.UseVisualStyleBackColor = true;
+            this.btn_enviarEmail.Visible = false;
             this.btn_enviarEmail.Click += new System.EventHandler(this.btn_enviarEmail_Click);
             // 
             // AlumnosTodos
